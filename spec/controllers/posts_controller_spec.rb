@@ -86,16 +86,6 @@ RSpec.describe PostsController, type: :controller do
        get :edit, {id: my_post.id}
        expect(response).to render_template :edit
      end
-
-     it "assigns post to be updated to @post" do
-       get :edit, {id: my_post.id}
-
-       post_instance = assigns(:post)
-
-       expect(post_instance.id).to eq my_post.id
-       expect(post_instance.title).to eq my_post.title
-       expect(post_instance.body).to eq my_post.body
-     end
    end
 
    describe "PUT update" do
