@@ -20,6 +20,7 @@ module RandomData
      sentence.capitalize << "."
    end
 
+   
 
    def random_word
      letters = ('a'..'z').to_a
