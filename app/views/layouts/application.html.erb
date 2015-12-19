@@ -15,7 +15,15 @@
        <li><%= link_to "About", about_path %></li>
 
        <div class="pull-right user-info">
-         <%= link_to "Sign Up", new_user_path %>
+         <% if current_user %>
+            <%= image_tag avatar_url(current_user), class: :gravatar %>
+            <div class="pull-right">
+              <%= current_user.name %> <br> <%= link_to "Sign Out", session_path(current_user), method: :delete %>
+            </div>
+         <% else %>
+            <%= link_to "Sign In", new_session_path %> or
+            <%= link_to "Sign Up", new_user_path %>
+          <% end %>
        </div>
      </ul>
 
@@ -25,6 +33,8 @@
            <%= link_to "Sign In", new_session_path %> or
            <%= link_to "Sign Up", new_user_path %>
          <% end %>
+       </div>
+     </ul>
 
      <% if flash[:notice] %>
        <div class="alert alert-success">
