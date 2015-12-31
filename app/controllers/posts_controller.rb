@@ -5,8 +5,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  end
-
   def new
    @topic = Topic.find(params[:topic_id])
    @post = Post.new
@@ -16,7 +14,6 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(post_params)
     @post.user = current_user
-
 
     if @post.save
       flash[:notice] = "Post was saved."
@@ -34,7 +31,6 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.assign_attributes(post_params)
-
 
     if @post.save
       flash[:notice] = "Post was updated."
@@ -60,7 +56,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-
-  params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body)
   end
 end
