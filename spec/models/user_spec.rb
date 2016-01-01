@@ -44,6 +44,7 @@ RSpec.describe User, type: :model do
 
      it "should be an invalid user due to incorrectly formatted email address" do
        expect(user_with_invalid_email_format).to_not be_valid
+     end
 
      it "should respond to role" do
        expect(user).to respond_to(:role)
@@ -87,4 +88,5 @@ RSpec.describe User, type: :model do
          expect(user.admin?).to be_truthy
        end
      end
+   end
 end
