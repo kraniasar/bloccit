@@ -1,11 +1,11 @@
 <h1>
-  <%= @post.title %> <br>
+  <%= @post.title %> <%= render partial: "ratings/display", locals: { rating: @post.rating } %><br>
   <small>
     submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
   </small>
 </h1>
 <div class="row">
-  <div class="col-md-8"
+  <div class="col-md-8">
     <%= render partial: "labels/list", locals: { labels: @post.labels } %>
     <br />
   </div>
@@ -18,9 +18,9 @@
       <h3>Comments</h3>
       <%= render @post.comments %>
     </div>
-      <% if current_user %>
-        <%= render 'comment/form', comment: Comment.new, post: @post %>
-      <% end %>
+    <% if current_user %>
+      <%= render 'comments/form', comment: Comment.new, post: @post %>
+    <% end %>
   </div>
   <% if user_is_authorized_for_post?(@post) %>
     <div class="col-md-4">
