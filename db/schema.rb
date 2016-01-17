@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160116145631) do
+=======
+ActiveRecord::Schema.define(version: 20160113151053) do
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -25,14 +29,23 @@ ActiveRecord::Schema.define(version: 20160116145631) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "favorites", force: :cascade do |t|
+<<<<<<< HEAD
     t.integer  "user_id"
+=======
+    t.string   "user"
+    t.string   "references"
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
     t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "favorites", ["post_id"], name: "index_favorites_on_post_id"
+<<<<<<< HEAD
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+=======
+  add_index "favorites", ["references"], name: "index_favorites_on_references"
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
 
   create_table "labelings", force: :cascade do |t|
     t.integer  "label_id"

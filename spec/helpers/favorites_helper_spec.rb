@@ -12,5 +12,8 @@ require 'rails_helper'
 # end
 RSpec.describe FavoritesHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
 end

@@ -1,13 +1,23 @@
 <%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
+<<<<<<< HEAD
   <div class="media">
     <div class="media-body">
       <small>
         <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
         <% if user_is_authorized_for_comment?(comment) %>
+=======
+  <div class="media-body">
+    <small>
+      <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
+      <% if user_is_authorized_for_comment?(comment) %>
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
             | <%= link_to "Delete", [@post, comment], method: :delete %>
       <% end %>
     </small>
     <p><%= comment.body %></p>
   </div>
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
 <% end %>

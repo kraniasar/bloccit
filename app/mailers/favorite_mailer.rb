@@ -11,6 +11,10 @@ class FavoriteMailer < ApplicationMailer
     @post = post
     @comment = comment
 
+<<<<<<< HEAD
     mail(to: user_email, subject: "New comment on #{post.title}")
+=======
+    mail(to: user.email, subject: "New comment on #{post.title}")
+>>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
   end
 end
