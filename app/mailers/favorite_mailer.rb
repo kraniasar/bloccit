@@ -1,5 +1,5 @@
-class FavoriteMailer < ApplicationMailer
-  default from: "kraniasar@gmail.com"
+class FavoriteMailer < ActionMailer::Base
+  default from: "youremail.com"
 
   def new_comment(user, post, comment)
 
@@ -11,10 +11,16 @@ class FavoriteMailer < ApplicationMailer
     @post = post
     @comment = comment
 
-<<<<<<< HEAD
-    mail(to: user_email, subject: "New comment on #{post.title}")
-=======
     mail(to: user.email, subject: "New comment on #{post.title}")
->>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
+  end
+
+  def new_post(post)
+    headers["Message-ID"] = "<posts/#{post.id}@your-app-name.example>"
+    headers["In-Reply-To"] = "<post/#{post.id}@your-app-name.example>"
+    headers["References"] = "<post/#{post.id}@your-app-name.example>"
+
+    @post = post
+
+    mail(to: post.user.email, subject: "You're following, #{post.title}")
   end
 end

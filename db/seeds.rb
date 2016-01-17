@@ -1,9 +1,9 @@
 include RandomData
 
-# Create Users
+
 5.times do
   user = User.create!(
- # #3
+
   name:     RandomData.random_name,
   email:    RandomData.random_email,
   password: RandomData.random_sentence
@@ -11,7 +11,7 @@ include RandomData
 end
 users = User.all
 
-# Create Topics
+
 15.times do
   Topic.create!(
     name:         RandomData.random_sentence,
@@ -20,7 +20,7 @@ users = User.all
 end
 topics = Topic.all
 
-# Create Posts
+
 50.times do
   post = Post.create!(
     user:   users.sample,
@@ -35,7 +35,7 @@ end
 
 posts = Post.all
 
-# Create Comments
+
 100.times do
   Comment.create!(
     user: users.sample,
@@ -44,7 +44,7 @@ posts = Post.all
   )
 end
 
-# Create an admin user
+
 admin = User.create!(
   name:     'Admin User',
   email:    'admin@example.com',
@@ -52,7 +52,7 @@ admin = User.create!(
   role:     'admin'
 )
 
-# Create a member
+
 member = User.create!(
   name:     'Member User',
   email:    'member@example.com',

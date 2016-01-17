@@ -1,21 +1,4 @@
-# encoding: UTF-8
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended that you check this file into your version control system.
-
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160116145631) do
-=======
-ActiveRecord::Schema.define(version: 20160113151053) do
->>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
+ActiveRecord::Schema.define(version: 20150911194832) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -29,23 +12,14 @@ ActiveRecord::Schema.define(version: 20160113151053) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "favorites", force: :cascade do |t|
-<<<<<<< HEAD
     t.integer  "user_id"
-=======
-    t.string   "user"
-    t.string   "references"
->>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
     t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "favorites", ["post_id"], name: "index_favorites_on_post_id"
-<<<<<<< HEAD
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
-=======
-  add_index "favorites", ["references"], name: "index_favorites_on_references"
->>>>>>> 2aa3fbf006ef86d13482c9a46e91d04e70d2d229
 
   create_table "labelings", force: :cascade do |t|
     t.integer  "label_id"
@@ -60,9 +34,13 @@ ActiveRecord::Schema.define(version: 20160113151053) do
 
   create_table "labels", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "labelable_id"
+    t.string   "labelable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "labels", ["labelable_type", "labelable_id"], name: "index_labels_on_labelable_type_and_labelable_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -92,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160113151053) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "role"
+    t.string   "auth_token"
   end
 
   create_table "votes", force: :cascade do |t|
