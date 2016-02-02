@@ -1,7 +1,6 @@
 class Api::V1::TopicsController < Api::V1::BaseController
-
-  before_action :authenticate_user, expect: [:index, :show]
-  before_action :authorize_user, expect: [:index, :show]
+  before_filter :authenticate_user, except: [:index, :show]
+  before_filter :authorize_user, except: [:index, :show]
 
   def index
     topics = Topic.all
